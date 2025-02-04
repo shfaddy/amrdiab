@@ -1,0 +1,80 @@
+; steps 64
+
+; depth 3
+
+; increment 1
+
+i "output" 0 -1 "undefined"
+
+t 0 105
+
+v 2
+
+{ 3600 measure
+
+i "note" [ $measure + 0/64 ] 1 "undefined" 36
+
+
+
+
+
+
+
+i "note" [ $measure + 8/64 ] 1 "undefined" 84
+
+
+
+
+
+
+
+i "note" [ $measure + 16/64 ] 1 "undefined" 72
+
+
+
+
+
+
+
+i "note" [ $measure + 24/64 ] 1 "undefined" 48
+
+
+
+
+
+
+
+i "note" [ $measure + 32/64 ] 1 "undefined" 60
+
+
+
+
+
+
+
+i "note" [ $measure + 40/64 ] 1 "undefined" 84
+
+
+
+
+
+
+
+i "note" [ $measure + 48/64 ] 1 "undefined" 48
+
+
+
+
+
+
+
+i "note" [ $measure + 56/64 ] 1 "undefined" 84
+
+
+
+
+
+
+
+
+}

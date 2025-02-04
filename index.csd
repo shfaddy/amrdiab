@@ -10,123 +10,136 @@
 
 sr = 48000
 ksmps = 32
-nchnls = 2
+nchnls = 1
 0dbfs = 1
 
+chnset 105, "clock/tempo"
 
-opcode shmix, 0, a
+chnset 4, "clock/measure"
 
-aNote xin
+chnset 16, "clock/steps"
 
-STrack sprintf "%d.%d", int ( p1 ), frac ( p1 ) * 10
+opcode shtrack, 0, iii
 
-chnmix aNote, STrack
+iStep, iOctave, iRange xin
 
-iFraction random .1, .9
+iNote init 12 * ( iOctave + 1 )
 
-p1 init int ( p1 ) + iFraction
+schedule "track", 0, -1, iStep, iNote
 
-prints "#shmix %s\n", STrack
+if iOctave < iRange then
+
+shtrack iStep, iOctave + 1, iRange
+
+endif
 
 endop
 
 alwayson "clock"
 
-gkClock init 0
-
-gkTempo init 210
-
-gkBeat init 60 / i ( gkTempo )
-
-gkMeasure init 8
-
 instr clock
 
-gkBeat = 60 / gkTempo
+kClock chnget "clock"
 
-kClock metro 1 / gkBeat
+kTempo chnget "clock/tempo"
+kMeasure chnget "clock/measure"
+kSteps chnget "clock/steps"
 
-if kClock == 1 then
+kStep = ( kMeasure * ( 60 / kTempo ) ) / kSteps
 
-gkClock = abs ( gkClock ) + 1
+kTick metro 1 / kStep
+
+if kTick == 1 then
+
+chnset abs ( kClock ) + 1, "clock"
 
 else
 
-gkClock = - abs ( gkClock )
+chnset -abs ( kClock ), "clock"
 
 endif
 
 endin
 
-instr 1, 2
+instr output
 
-STrack sprintf "%d.%d", frac ( p1 ) * 1000, p1
+iFraction random .1, .9
+p1 += iFraction
 
-prints "#sh%f %s\n", p1, STrack
+STrack strget p4
 
 aNote chnget STrack
 
 aNote clip aNote, 1, 1
 
-iDistance random 0, 13
+aAmplitude random 0, 1
 
-;aNote *= 1/2^iDistance
+iChannel init p5
 
-outch int ( p1 ), aNote
+outch iChannel, aNote * aAmplitude
+
+if iChannel == nchnls then
 
 chnclear STrack
 
-endin
+else
 
-instr 3
-
-if gkClock > 0 && gkClock % gkMeasure == p4 then
-
-kChannel = 1
-
-while kChannel <= 2 do
-
-schedulek int ( frac ( p1 ) * 1000 ) + kChannel / 10, 0, 1
-
-kChannel += 1
-
-od
+schedule "output", p2, p3, STrack, iChannel + 1
 
 endif
 
 endin
 
-alwayson 1.060
-alwayson 2.060
+instr track
 
-alwayson 3.0600, 0
-alwayson 3.0601, 1
-alwayson 3.0603, 3
-alwayson 3.0604, 4
-alwayson 3.0606, 6
+iTrack random .1, .9
 
-instr 60
+p1 init int ( p1 ) + iTrack
 
-iRhythm random 5, 8
+STrack sprintf "track:%f", iTrack
+
+schedule "output", 0, -1, STrack, 1
+
+kClock chnget "clock"
+kSteps chnget "clock/steps"
+
+if kClock > 0 && kClock % kSteps == p4 then
+
+schedulek "note", 0, 1, STrack, p5
+
+endif
+
+endin
+
+instr note
+
+iFraction random .1, .9
+p1 += iFraction
+
+print p5
+
+iRhythm random ( p5 / 12 ), ( p5 / 12 ) + 4
 
 p3 /= 2^( int ( iRhythm ) )
 
 iAttack random 0, 8
 iDecay random 1, int ( iAttack )
-iSustain random 0, 3
+iSustain random iRhythm + 2, iRhythm + 5
 iRelease random 0, 4
 
 aAmplitude madsr p3/2^iAttack, p3/2^iDecay, 1/2^iSustain, p3/2^iRelease
 
 iDetune random 0, 47
 
-iNote init int ( p1 ) + int ( iDetune ) / 4
+iNote init p5 + int ( iDetune ) / 4
 
 iFrequency init cpsmidinn ( iNote )
 
-iSweep random 0, 13
+aSweep random -1, 1
 
-aFrequency poscil iFrequency, 2^( int ( iSweep ) )
+aFrequency = iFrequency * cent ( aSweep * 1200 )
+
+;aFrequency poscil iFrequency, 2^( int ( iSweep ) )
 
 iShape random 0, 2
 iShape init int ( iShape )
@@ -142,17 +155,43 @@ aSkew random 0, 1
 
 aNote squinewave aFrequency, aClip, aSkew
 
-aBand random 20, 2^5
-
-aNote butterbp aNote, aFrequency, aFrequency / aBand
-
 aNote *= aAmplitude
 
 endif
 
-shmix aNote
+kBand random 0, 2
+
+aNote butterhp aNote, aFrequency / 2^int ( kBand )
+
+aNote butterlp aNote, aFrequency * 2^int ( kBand )
+
+STrack strget p4
+
+chnmix aNote, STrack
 
 endin
+
+shtrack 0, 2, 5
+
+shtrack 2, 4, 7
+
+shtrack 4, 5, 23
+
+shtrack 5, 5, 23
+
+shtrack 6, 4, 7
+
+shtrack 8, 2, 5
+
+shtrack 10, 5, 23
+
+shtrack 11, 5, 23
+
+shtrack 12, 4, 7
+
+shtrack 14, 5, 23
+
+shtrack 15, 5, 23
 
 </CsInstruments>
 

@@ -1,0 +1,264 @@
+; steps 256
+
+; depth 5
+
+; increment 2
+
+chnset 256, "clock/steps"
+
+shtrack 0, 2, 5
+
+shtrack 2, 16, 19
+
+shtrack 4, 14, 17
+
+shtrack 6, 16, 19
+
+shtrack 8, 12, 15
+
+shtrack 10, 16, 19
+
+shtrack 12, 14, 17
+
+shtrack 14, 16, 19
+
+shtrack 16, 10, 13
+
+shtrack 18, 16, 19
+
+shtrack 20, 14, 17
+
+shtrack 22, 16, 19
+
+shtrack 24, 12, 15
+
+shtrack 26, 16, 19
+
+shtrack 28, 14, 17
+
+shtrack 30, 16, 19
+
+shtrack 32, 4, 7
+
+shtrack 34, 16, 19
+
+shtrack 36, 14, 17
+
+shtrack 38, 16, 19
+
+shtrack 40, 12, 15
+
+shtrack 42, 16, 19
+
+shtrack 44, 14, 17
+
+shtrack 46, 16, 19
+
+shtrack 48, 10, 13
+
+shtrack 50, 16, 19
+
+shtrack 52, 14, 17
+
+shtrack 54, 16, 19
+
+shtrack 56, 12, 15
+
+shtrack 58, 16, 19
+
+shtrack 60, 14, 17
+
+shtrack 62, 16, 19
+
+shtrack 64, 6, 9
+
+shtrack 66, 16, 19
+
+shtrack 68, 14, 17
+
+shtrack 70, 16, 19
+
+shtrack 72, 12, 15
+
+shtrack 74, 16, 19
+
+shtrack 76, 14, 17
+
+shtrack 78, 16, 19
+
+shtrack 80, 10, 13
+
+shtrack 82, 16, 19
+
+shtrack 84, 14, 17
+
+shtrack 86, 16, 19
+
+shtrack 88, 12, 15
+
+shtrack 90, 16, 19
+
+shtrack 92, 14, 17
+
+shtrack 94, 16, 19
+
+shtrack 96, 4, 7
+
+shtrack 98, 16, 19
+
+shtrack 100, 14, 17
+
+shtrack 102, 16, 19
+
+shtrack 104, 12, 15
+
+shtrack 106, 16, 19
+
+shtrack 108, 14, 17
+
+shtrack 110, 16, 19
+
+shtrack 112, 10, 13
+
+shtrack 114, 16, 19
+
+shtrack 116, 14, 17
+
+shtrack 118, 16, 19
+
+shtrack 120, 12, 15
+
+shtrack 122, 16, 19
+
+shtrack 124, 14, 17
+
+shtrack 126, 16, 19
+
+shtrack 128, 2, 5
+
+shtrack 130, 16, 19
+
+shtrack 132, 14, 17
+
+shtrack 134, 16, 19
+
+shtrack 136, 12, 15
+
+shtrack 138, 16, 19
+
+shtrack 140, 14, 17
+
+shtrack 142, 16, 19
+
+shtrack 144, 10, 13
+
+shtrack 146, 16, 19
+
+shtrack 148, 14, 17
+
+shtrack 150, 16, 19
+
+shtrack 152, 12, 15
+
+shtrack 154, 16, 19
+
+shtrack 156, 14, 17
+
+shtrack 158, 16, 19
+
+shtrack 160, 8, 11
+
+shtrack 162, 16, 19
+
+shtrack 164, 14, 17
+
+shtrack 166, 16, 19
+
+shtrack 168, 12, 15
+
+shtrack 170, 16, 19
+
+shtrack 172, 14, 17
+
+shtrack 174, 16, 19
+
+shtrack 176, 10, 13
+
+shtrack 178, 16, 19
+
+shtrack 180, 14, 17
+
+shtrack 182, 16, 19
+
+shtrack 184, 12, 15
+
+shtrack 186, 16, 19
+
+shtrack 188, 14, 17
+
+shtrack 190, 16, 19
+
+shtrack 192, 4, 7
+
+shtrack 194, 16, 19
+
+shtrack 196, 14, 17
+
+shtrack 198, 16, 19
+
+shtrack 200, 12, 15
+
+shtrack 202, 16, 19
+
+shtrack 204, 14, 17
+
+shtrack 206, 16, 19
+
+shtrack 208, 10, 13
+
+shtrack 210, 16, 19
+
+shtrack 212, 14, 17
+
+shtrack 214, 16, 19
+
+shtrack 216, 12, 15
+
+shtrack 218, 16, 19
+
+shtrack 220, 14, 17
+
+shtrack 222, 16, 19
+
+shtrack 224, 8, 11
+
+shtrack 226, 16, 19
+
+shtrack 228, 14, 17
+
+shtrack 230, 16, 19
+
+shtrack 232, 12, 15
+
+shtrack 234, 16, 19
+
+shtrack 236, 14, 17
+
+shtrack 238, 16, 19
+
+shtrack 240, 10, 13
+
+shtrack 242, 16, 19
+
+shtrack 244, 14, 17
+
+shtrack 246, 16, 19
+
+shtrack 248, 12, 15
+
+shtrack 250, 16, 19
+
+shtrack 252, 14, 17
+
+shtrack 254, 16, 19
+

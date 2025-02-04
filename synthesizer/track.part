@@ -1,0 +1,36 @@
+opcode shtrack, 0, iii
+
+iStep, iOctave, iRange xin
+
+iNote init 12 * ( iOctave + 1 )
+
+schedule "track", 0, -1, iStep, iNote
+
+if iOctave < iRange then
+
+shtrack iStep, iOctave + 1, iRange
+
+endif
+
+endop
+
+instr track
+
+iTrack random .1, .9
+
+p1 init int ( p1 ) + iTrack
+
+STrack sprintf "track:%f", iTrack
+
+schedule "output", 0, -1, STrack, 1
+
+kClock chnget "clock"
+kSteps chnget "clock/steps"
+
+if kClock > 0 && kClock % kSteps == p4 then
+
+schedulek "note", 0, 1, STrack, p5
+
+endif
+
+endin

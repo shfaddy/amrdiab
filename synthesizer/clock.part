@@ -1,0 +1,34 @@
+alwayson "clock"
+
+chnset 75, "clock/tempo"
+
+chnset 4, "clock/measure"
+
+chnset 32, "clock/steps"
+
+instr clock
+
+kClock chnget "clock"
+
+kTempo chnget "clock/tempo"
+kMeasure chnget "clock/measure"
+kSteps chnget "clock/steps"
+
+kStep = ( kMeasure * ( 60 / kTempo ) ) / kSteps
+
+chnset kStep, "clock/step"
+
+kTick metro 1 / kStep
+chnset kSteps * kStep, "clock/bar"
+
+if kTick == 1 then
+
+chnset abs ( kClock ) + 1, "clock"
+
+else
+
+chnset -abs ( kClock ), "clock"
+
+endif
+
+endin

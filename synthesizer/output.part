@@ -1,0 +1,28 @@
+instr output
+
+iFraction random .1, .9
+p1 += iFraction
+
+STrack strget p4
+
+aNote chnget STrack
+
+aNote clip aNote, 1, 1
+
+aAmplitude random 0, 1
+
+iChannel init p5
+
+outch iChannel, aNote * aAmplitude
+
+if iChannel == nchnls then
+
+chnclear STrack
+
+else
+
+schedule "output", p2, p3, STrack, iChannel + 1
+
+endif
+
+endin
